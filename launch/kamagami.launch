@@ -11,12 +11,11 @@
   <arg name="yaw" default="0"/>
 
 
-  <group ns="$(arg name)">
 	<!-- Load the URDF into the ROS Parameter Server.  this is necessary
 	  for the gazebo and for the robot_state_publisher so that it can load 
 		the robot  model -->
 	<param name="robot_description"
-		command="$(find xacro)/xacro.py '$(find kamagami)/urdf/kamagami.xacro'" />
+		command="$(find xacro)/xacro.py '$(find kamagami)/urdf/kamagami_with_cone.xacro'" />
 	<param name="tf_prefix" value="$(arg name)" />
 <!--  this launches the software nodes that run on the roadrunner 
 	for both real and simulated cases -->
@@ -39,5 +38,4 @@
 			<node pkg="robot_state_publisher" 
 				type="robot_state_publisher" name="state_pub" >
 			</node>
- </group>
 </launch>

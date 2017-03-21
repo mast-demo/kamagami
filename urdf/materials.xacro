@@ -18,7 +18,7 @@
   </material>
 
   <material name="orange">
-    <color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
+    <color rgba="${255/255} ${108/255} ${10/255} 0.5"/>
   </material>
 
   <material name="brown">

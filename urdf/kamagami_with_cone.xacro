@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="roadrunner">
+<xacro:include filename="$(find kamagami)/urdf/kamagami.xacro"/>
+<link name="cone_link">
+	<visual>
+		<origin xyz="0 0 0"/>
+		<geometry>
+			<mesh filename="$(find kamagami)/meshes/cone.dae"/>
+		</geometry>
+	</visual>
+</link>
+<gazebo reference="cone_link">
+	<material>Gazebo/YellowTransparent</material>
+</gazebo>
+<joint name="cone_joint" type="fixed">
+	<origin xyz="0 0 0"/>
+	<parent link="base_link"/>
+	<child link="cone_link"/>
+	<axis xyz="0 0 -1"/>
+</joint>
+</robot>
