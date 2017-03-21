@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<launch>
+	<arg name="name" default="kamagami"/>
+	<arg name="x" default="0.0"/>
+	<arg name="y" default="0.0"/>
+	<arg name="z" default="0.25"/>
+	<arg name="yaw" default="0.0"/>
+	<node name="gazebo_model" pkg="gazebo_ros" type="spawn_model"
+		args="-urdf -model $(arg name) -x $(arg x) -y $(arg y) -z $(arg z) -Y $(arg yaw) -param robot_description">
+		</node>
+</launch>
+

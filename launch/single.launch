@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- 
+		start with the empty world in order to set up the 
+		defaults properly
+	-->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+	<include file="$(find kamagami)/launch/kamagami.launch">
+		<arg name="name" value="eva"/>
+		<arg name="x" value="-0.25"/>
+		<arg name="y" value="-0.25"/>
+		<arg name="yaw" value="1.57"/>
+		<arg name="real" value="false"/>
+	</include>
+</launch>
