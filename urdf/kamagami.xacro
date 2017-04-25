@@ -24,8 +24,7 @@
 					<mesh filename="package://kamagami/meshes/kamagami.dae" scale="0.001 0.001 0.001"/>
 				</geometry>
 		</visual>
-		<xacro:ball_wheel origin="0.05 0 -0.025"/>
-		<xacro:ball_wheel origin="-0.05 0 -0.025"/>
+		<xacro:ball_wheel origin="-0.05 0 -0.024"/>
 		<inertial>
 			<origin xyz="0 0 0"/>
 			<mass value="0.105"/>
@@ -68,9 +67,9 @@
 			<axis xyz="0 0 -1"/>
 		</joint>
 	</xacro:macro>
-	<xacro:wheel name="left_wheel" xyz="0.0 0.03 0" 
+	<xacro:wheel name="left_wheel" xyz="0.05 -0.03 0" 
 		rpy="1.5708 0 0"/>
-	<xacro:wheel name="right_wheel" xyz="0.0 -0.03 0" 
+	<xacro:wheel name="right_wheel" xyz="0.05 0.03 0" 
 		rpy="1.5708 0 0"/>
 
 	<link name="raspicam_link">
