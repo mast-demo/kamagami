@@ -10,7 +10,7 @@
 	</visual>
 </link>
 <gazebo reference="cone_link">
-	<material>Gazebo/YellowTransparent</material>
+	<material value="Gazebo/YellowTransparent"/>
 </gazebo>
 <joint name="cone_joint" type="fixed">
 	<origin xyz="0 0 0"/>
