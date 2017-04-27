@@ -171,7 +171,7 @@
 	    <alwaysOn>true</alwaysOn>
 	    <legacyMode>false</legacyMode>
 	    <publishWheelTF>false</publishWheelTF>
-	    <publishTf>1</publishTf>
+	    <publishTf>0</publishTf>
 	    <publishWheelJointState>true</publishWheelJointState>
 	    <leftJoint>left_wheel_joint</leftJoint>
 	    <rightJoint>right_wheel_joint</rightJoint>
