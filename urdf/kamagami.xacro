@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="roadrunner">
 <xacro:property name="wheel_radius" value="0.03" />
 <xacro:property name="wheel_separation" value="0.12" />
-<xacro:property name="show_wheels" value="true" />
+<xacro:property name="show_wheels" value="false" />
 <xacro:macro name="ball_wheel" params="origin name">
 	<link name="${name}_link">
 		<collision>
