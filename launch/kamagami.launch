@@ -15,7 +15,7 @@
 	  for the gazebo and for the robot_state_publisher so that it can load 
 		the robot  model -->
 	<param name="robot_description"
-		command="$(find xacro)/xacro.py '$(find kamagami)/urdf/kamagami.xacro'" />
+		command="$(find xacro)/xacro.py '$(find kamagami)/urdf/kamagami.xacro' prefix:=$(arg name)"/>
 	<param name="tf_prefix" value="$(arg name)" />
 <!--  this launches the software nodes that run on the roadrunner 
 	for both real and simulated cases -->
@@ -35,4 +35,6 @@
   			<arg name="yaw" default="$(arg yaw)"/>
       </include>
 		</group>
+    <node pkg="tf" type="static_transform_publisher" name="laser_pub" 
+      args="0 0 0.1 0 0 0 $(arg name)/base_link $(arg name)/laser_link 100"/>
 </launch>
