@@ -171,12 +171,12 @@
 	    <alwaysOn>true</alwaysOn>
 	    <legacyMode>false</legacyMode>
 	    <publishWheelTF>false</publishWheelTF>
-	    <publishTf>0</publishTf>
-	    <publishWheelJointState>true</publishWheelJointState>
+	    <publishTf>false</publishTf>
+	    <publishWheelJointState>false</publishWheelJointState>
 	    <leftJoint>left_wheel_joint</leftJoint>
 	    <rightJoint>right_wheel_joint</rightJoint>
 	    <wheelAcceleration>0</wheelAcceleration>
-	    <wheelTorque>1</wheelTorque>
+	    <wheelTorque>5</wheelTorque>
 	    <torque>1</torque>
 	    <commandTopic>cmd_vel</commandTopic>
 	    <odometryTopic>odom</odometryTopic>
@@ -184,12 +184,14 @@
 	    <odometryFrame>odom</odometryFrame>
 	    <rosDebugLevel>none</rosDebugLevel>
 	    <robotBaseFrame>base_link</robotBaseFrame>
+      <wheelSeparation>${wheel_separation}</wheelSeparation>
+      <wheelDiameter>${wheel_radius*2.0}</wheelDiameter>
 			<updateRate>10</updateRate>
 	  </plugin>
 	</gazebo>
   <joint name="laser_joint" type="fixed">
     <axis xyz="0 1 0" />
-    <origin xyz="0 0 0.03" rpy="0 0 0"/>
+    <origin xyz="0 0 0.04" rpy="0 0 0"/>
     <parent link="body_link"/>
     <child link="laser_link"/>
   </joint>
