@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!-- this is the launcher for the kamagami
-	The real flag determines if the onboard sensors are started
+  The real flag determines if the onboard sensors are started
 -->
 <launch>
   <arg name="name" default="kamagami"/>
@@ -11,30 +11,55 @@
   <arg name="yaw" default="0"/>
 
 
-	<!-- Load the URDF into the ROS Parameter Server.  this is necessary
-	  for the gazebo and for the robot_state_publisher so that it can load 
-		the robot  model -->
-	<param name="robot_description"
-		command="$(find xacro)/xacro.py '$(find kamagami)/urdf/kamagami.xacro' prefix:=$(arg name)"/>
-	<param name="tf_prefix" value="$(arg name)" />
+  <!-- Load the URDF into the ROS Parameter Server.  this is necessary
+    for the gazebo and for the robot_state_publisher so that it can load 
+    the robot  model -->
+  <param name="robot_description"
+    command="$(find xacro)/xacro.py '$(find kamagami)/urdf/kamagami.xacro' prefix:=$(arg name)"/>
+  <param name="tf_prefix" value="$(arg name)" />
 <!--  this launches the software nodes that run on the roadrunner 
-	for both real and simulated cases -->
-		<!--
+  for both real and simulated cases -->
+    <!--
     <node name="roadrunner" pkg="roadrunner_node" 
-			type="roadrunner_node" args="$(arg name)" output="screen"/>
-			-->
+      type="roadrunner_node" args="$(arg name)" output="screen"/>
+      -->
     <!-- Only start sensors in the real hardware otherwise they are
-		handled by gazebo plugins -->
-		<!-- if not real, then spawn gazebo model -->
-		<group unless="$(arg real)">
+    handled by gazebo plugins -->
+    <!-- if not real, then spawn gazebo model -->
+    <group unless="$(arg real)">
       <include file="$(find kamagami)/launch/kamagami_gazebo.launch">
         <arg name="name" value="$(arg name)"/>
-  			<arg name="x" default="$(arg x)"/>
-  			<arg name="y" default="$(arg y)"/>
-  			<arg name="z" default="$(arg z)"/>
-  			<arg name="yaw" default="$(arg yaw)"/>
+        <arg name="x" default="$(arg x)"/>
+        <arg name="y" default="$(arg y)"/>
+        <arg name="z" default="$(arg z)"/>
+        <arg name="yaw" default="$(arg yaw)"/>
       </include>
-		</group>
+    </group>
     <node pkg="tf" type="static_transform_publisher" name="laser_pub" 
       args="0 0 0.1 0 0 0 $(arg name)/base_link $(arg name)/laser_link 100"/>
+    <node pkg="tf" type="static_transform_publisher" name="camera_pub" 
+      args="-0.02 0 0.1 0 0 0 /$(arg name)/base_link /$(arg name)/camera_link 100"/>
+<!--
+    <node pkg="robot_localization" type="ekf_localization_node" 
+      name="odom_ekf" clear_params="true">
+      <param name="frequency" value="30"/>  
+      <param name="sensor_timeout" value="0.1"/>  
+      <param name="two_d_mode" value="true"/>
+    
+      <param name="odom_frame" value="odom"/>
+      <param name="base_link_frame" value="base_link"/>
+      <param name="world_frame" value="odom"/>
+
+      <param name="odom0" value="odom"/>
+
+      <rosparam param="odom0_config">[false, false, false, 
+                                      false, false, false, 
+                                      true, true, false, 
+                                      false, false, true,
+                                      false, false, false]</rosparam>
+    
+      <param name="odom0_differential" value="false"/>
+  </node>
+-->
+
 </launch>

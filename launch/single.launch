@@ -11,6 +11,7 @@
     <arg name="headless" value="false"/>
     <arg name="debug" value="false"/>
   </include>
+	<group ns="eva">
 	<include file="$(find kamagami)/launch/kamagami.launch">
 		<arg name="name" value="eva"/>
 		<arg name="x" value="-0.25"/>
@@ -18,4 +19,5 @@
 		<arg name="yaw" value="1.57"/>
 		<arg name="real" value="false"/>
 	</include>
+	</group>
 </launch>
