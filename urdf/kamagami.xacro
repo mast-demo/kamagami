@@ -186,7 +186,7 @@
 	    <robotBaseFrame>base_link</robotBaseFrame>
       <wheelSeparation>${wheel_separation}</wheelSeparation>
       <wheelDiameter>${wheel_radius*2.0}</wheelDiameter>
-			<updateRate>10</updateRate>
+			<updateRate>100</updateRate>
 	  </plugin>
 	</gazebo>
   <joint name="laser_joint" type="fixed">
