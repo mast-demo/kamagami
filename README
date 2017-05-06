@@ -1,0 +1,4 @@
+roslaunch kamagami demo.launch
+
+Command to send it to a pose:
+rostopic pub -1 /eva/move_base_simple/goal geometry_msgs/PoseStamped '{header: {frame_id: eva/map}, pose: {position: {x: 5, y: 7}, orientation: {w: 1}}}'

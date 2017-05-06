@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="name" default="agent"/>
+
+  <node pkg="move_base" type="move_base" respawn="false" 
+    name="move_base" output="screen">
+   	<remap from="/map" to="/$(arg name)/map"/>
+		<param name="base_global_planner" value="navfn/NavfnROS" />
+		<param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+    <rosparam file="$(find kamagami)/config/move_base/planner.yaml" 
+			command="load"/>
+
+    <rosparam file="$(find kamagami)/config/move_base/costmap_common.yaml" 
+			command="load" ns="global_costmap" />
+    <rosparam file="$(find kamagami)/config/move_base/costmap_common.yaml" 
+			command="load" ns="local_costmap" />
+
+    <rosparam file="$(find kamagami)/config/move_base/costmap_local.yaml" 
+			command="load"/>
+    <rosparam file="$(find kamagami)/config/move_base/costmap_global.yaml" 
+      command="load"/>
+  </node>
+
+</launch>
