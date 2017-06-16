@@ -4,7 +4,7 @@
   <arg name="name" default="agent"/>
 
   <node pkg="move_base" type="move_base" respawn="false" 
-    name="move_base" output="screen">
+    name="move_base">
    	<remap from="/map" to="/$(arg name)/map"/>
 		<param name="base_global_planner" value="navfn/NavfnROS" />
 		<param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
