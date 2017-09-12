@@ -10,7 +10,18 @@
 	</visual>
 </link>
 <gazebo reference="cone_link">
+  <visual name="cone_vis">
+  <transparency>0.8</transparency>
+  <material>
+  <ambient>1.0 0 0 0.1</ambient>
+  <diffuse>1.0 0 0 0.1</diffuse>
+  <specular>1.0 0 0 0.1</specular>
+  <emissive>1.0 0 0 0.1</emissive>
+  </material>
+  </visual>
+  <!--
 	<material value="Gazebo/YellowTransparent"/>
+  -->
 </gazebo>
 <joint name="cone_joint" type="fixed">
 	<origin xyz="0 0 0"/>

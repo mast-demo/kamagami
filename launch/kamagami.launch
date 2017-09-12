@@ -14,7 +14,7 @@
     for the gazebo and for the robot_state_publisher so that it can load 
     the robot  model -->
   <param name="robot_description"
-    command="$(find xacro)/xacro.py '$(find kamagami)/urdf/kamagami.xacro' prefix:=$(arg name)"/>
+    command="$(find xacro)/xacro.py '$(find kamagami)/urdf/kamagami_with_cone.xacro' prefix:=$(arg name)"/>
   <param name="tf_prefix" value="$(arg name)" />
 <!--  this launches the software nodes that run on the roadrunner 
   for both real and simulated cases -->
@@ -49,9 +49,11 @@
       <param name="odom_topic" value="odom"/>
       <param name="publish_pose" value="true"/>
     </node>
+    <!--
 	<include file="$(find kamagami)/launch/move_base.launch">
     <arg name="name" value="$(arg name)"/>
 	</include>
+  -->
   <node pkg="hector_mapping" type="hector_mapping" name="slam">
       <param name="base_frame" value="$(arg name)/base_link"/>
       <param name="odom_frame" value="$(arg name)/odom"/>
@@ -61,7 +63,7 @@
       <param name="use_tf_pose_start_estimate" value="true"/>
       <param name="use_tf_scan_transformation" value="true"/>
       <param name="map_resolution" value="0.1"/>
-      <param name="map_size" value="2048"/>
+      <param name="map_size" value="1024"/>
       <remap from="initialpose" to="pose"/>
       <remap from="map" to="$(arg map_topic)"/>
   </node>
